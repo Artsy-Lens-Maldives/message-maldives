@@ -92,7 +92,7 @@
 	</header>
 	<!-- /Header -->
 
-	<div style="margin-top: 100px; margin-bottom: 250px">
+	<div style="margin-top: 50px; margin-bottom: 250px">
 		@yield('content')
 	</div>
 	<!-- Footer -->
