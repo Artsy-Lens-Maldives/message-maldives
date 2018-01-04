@@ -22,3 +22,9 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/blog-single', function () {
     return view('blog.detail');
 });
+
+Route::get('/user/{role}/{id}', function($id, $role) {
+    $user = \App\User::find($id);
+    $user->assignRole($role);
+    return $user->getRoleNames();
+});
