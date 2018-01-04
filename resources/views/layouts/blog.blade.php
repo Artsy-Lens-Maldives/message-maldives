@@ -66,13 +66,11 @@
 				<ul class="main-nav nav navbar-nav navbar-right">
 					<li><a href="{{ url('/') }}#home">Home</a></li>
 					<li><a href="{{ url('/') }}#about">About</a></li>
-					<li><a href="{{ url('/') }}#portfolio">Portfolio</a></li>
 					<li><a href="{{ url('/') }}#service">Services</a></li>
 					<li><a href="{{ url('/') }}#pricing">Prices</a></li>
-					<li><a href="{{ url('/') }}#team">Team</a></li>
 					<li class="has-dropdown"><a>Blog</a>
 						<ul class="dropdown">
-							<li><a href="#">blog post</a></li>
+							<li><a href="/blog-single">blog post</a></li>
 						</ul>
 					</li>
 					<li><a href="{{ url('/') }}#contact">Contact</a></li>
