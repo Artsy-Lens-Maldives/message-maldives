@@ -23,6 +23,11 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home')->with('title', 'Dashboard');
+        $user = \Auth::user();
+        if ($user->hasRole('admin')) {
+            return redirect('admin/home');
+        } else {
+            return view('home')->with('title', 'Dashboard');
+        }
     }
 }

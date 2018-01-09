@@ -11,9 +11,14 @@ let mix = require('laravel-mix');
  |
  */
 
-mix.js('resources/assets/js/app.js', 'public/js')
-   .sass('resources/assets/sass/app.scss', 'public/css')
-   .js('resources/assets/js/main.js', 'public/js')
+mix.js('resources/assets/js/main.js', 'public/js')
    .styles([
        'resources/assets/css/style.css'
-    ], 'public/css/style.css');
+    ], 'public/css/style.css')
+   .less('resources/assets/admin/less/colors/blue-dark.less', 'public/css/admin/color.css')
+   .styles([
+        'resources/assets/admin/css/sidebar-nav.min.css',    
+        'resources/assets/admin/css/animate.css',
+        'resources/assets/admin/css/spinners.css'
+    ], 'public/css/admin/combined.css')
+   .js('resources/assets/admin/js/custom.js', 'public/js/admin/custom.js');

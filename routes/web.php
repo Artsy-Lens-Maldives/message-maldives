@@ -14,17 +14,30 @@
 Route::get('/', function () {
     return view('index');
 });
-
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
-
 Route::get('/blog-single', function () {
     return view('blog.detail');
 });
 
-Route::get('/user/{role}/{id}', function($id, $role) {
-    $user = \App\User::find($id);
-    $user->assignRole($role);
-    return $user->getRoleNames();
+Auth::routes();
+Route::get('/home', 'HomeController@index')->name('home');
+
+Route::prefix('roles')->group(function () {
+    Route::get('/user/{role}/{id}', function($id, $role) {
+        $user = \App\User::find($id);
+        $user->assignRole($role);
+        return $user->getRoleNames();
+    });
 });
+
+Route::prefix('admin')->group(function () {
+    Route::get('login', function() {
+        return view('admin.auth.login');
+    });
+    Route::get('register', function() {
+        return view('admin.auth.register');
+    });
+    Route::get('home', function() {
+        return view('admin.index');
+    });
+});
+
