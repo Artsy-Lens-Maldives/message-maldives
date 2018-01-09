@@ -84,7 +84,7 @@
 		<!-- header wrapper -->
 		<div class="header-wrapper sm-padding bg-grey">
 			<div class="container">
-				<h2>{{ $title }}</h2>
+				<h2>Message Maldives</h2>
 			</div>
 		</div>
 		<!-- /header wrapper -->

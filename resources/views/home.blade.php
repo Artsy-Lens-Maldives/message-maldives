@@ -25,8 +25,13 @@
                             Admins can only see this
                         @endrole
                     </p>
-
-                    <p>You are logged in!</p>
+                    <div class="row">
+                        <p>You are logged in!</p>
+                        <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i class="fa fa-power-off"></i> Logout</a>
+                    </div>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        {{ csrf_field() }}
+                    </form>
                 </div>
             </div>
         </div>
