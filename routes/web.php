@@ -49,6 +49,10 @@ Route::prefix('roles')->group(function () {
         $user->syncRoles([$role]);
         return $user->getRoleNames();
     });
+    Route::get('/create/{new_role}', function($new_role) {
+        $role = Role::create(['name' => $new_role]);
+        return redirect('/home');
+    });
 });
 /*
 |--------------------------------------------------------------------------
