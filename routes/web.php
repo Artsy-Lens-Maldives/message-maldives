@@ -4,6 +4,7 @@ use App\User;
 use Illuminate\Support\Facades\Auth;
 use Spatie\Permission\Models\Role;
 use Illuminate\Http\Request;
+use Mohamedathik\PhotoUpload\Upload;
 
 /*
 |--------------------------------------------------------------------------
@@ -105,3 +106,39 @@ Route::middleware(['role:admin'])->prefix('admin')->group(function () {
     });
 });
 
+
+Route::get('/photo', function () {
+    return view('photoTest');
+});
+
+Route::post('/photo', function (Request $request) {
+    // The original file from rquest
+    $file = $request->image;
+
+    // Give it any file name you want (make sure to include the extension)
+    $file_name = $file->getClientOriginalName();
+
+    // Location that the file would be upload (Do not include the filename)
+    $location = "/images";
+
+    // Uploading of orignal image (this would return the location for original image including the filename)
+    $url_original = Upload::upload_original($file, $file_name, $location);
+
+    // Uploading of thumnail image (this would return the location for thumbnail image including the filename)
+    $url_thumbnail = Upload::upload_thumbnail($file, $file_name, $location);
+
+    echo $url_original."<br>".$url_thumbnail;
+});
+
+Route::get('/photo/delete', function () {
+    // Deleting the thumbnail imaege
+    $delete_thumbnail_image = Upload::delete_image('/images/original/1515931209-ID Back.JPG');
+    // The variable above will always return a true or false vakue
+    // true if image is deleted 
+    // and false if image could not be found
+    if ($delete_thumbnail_image) {
+        return 'Successfully deleted';
+    } else {
+        return 'Image could not be found';
+    }
+});
